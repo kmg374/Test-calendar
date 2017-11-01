@@ -6,17 +6,18 @@ public class calendar {
 
 	private final int[] MAX_Days = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
-	public int maxDaysOfMonth(int month) {
+	public int getmaxDaysOfMonth(int month) {
 
-		//다른 방법 :  return MAX_Days[month - 1]; 이게 더 쉽다
+		return MAX_Days[month - 1];
 		
+		/*
 		if (month == 1) {
 			return 31;
 		} else if (month == 2) {
 			return 28;
 		}
 		return 31;
-
+			*/
 	}
 
 	public void printSamplecalendar() {
@@ -31,16 +32,32 @@ public class calendar {
 	public static void main(String[] args) {
 
 		// 숫자를 입력받아 해당하는 달의 최대의 알수를 출력하는 프로그램
+		
+		String PROMPT = "cal> ";
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("달을 입력하세요");
 		calendar cal = new calendar();
-		int month = scanner.nextInt();
-
-		System.out.printf("%d일은 %d일까지 있습니다.\n", month, cal.maxDaysOfMonth(month));
-
-		cal.printSamplecalendar();
+		
+		//System.out.println("반복 횟수를 입력하세용");
+		System.out.print(">");
+		//int repeat; 
+		//scanner.nextInt();
+		int month = 1
+				;
+		while (true) {
+			System.out.println("달을 입력하세요");
+			System.out.print(PROMPT);
+			month = scanner.nextInt();
+			if(month == -1) {
+				break;
+			}
+			if(month > 12) {
+				continue;
+			}
+			System.out.printf("%d일은 %d일까지 있습니다.\n", month, cal.getmaxDaysOfMonth(month));
+		}
+		System.out.println("끝났습니다");
+		//cal.printSamplecalendar();
 		scanner.close();
 
 	}
-
 }
